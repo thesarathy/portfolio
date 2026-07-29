@@ -10,9 +10,9 @@
   --color-border: #232323;
 
   /* Fonts */
-  --font-display-family: var(--font-display), sans-serif;
-  --font-body-family: var(--font-body), sans-serif;
-  --font-mono-family: var(--font-mono), monospace;
+  --font-display: var(--font-display-sans), sans-serif;
+  --font-body: var(--font-body-sans), sans-serif;
+  --font-mono: var(--font-mono-mono), monospace;
 
   /* Type scale (rem, 1.25 ratio) */
   --text-xs: 0.75rem;
@@ -40,15 +40,15 @@
 body {
   background-color: var(--color-bg);
   color: var(--color-fg);
-  font-family: var(--font-body-family);
+  font-family: var(--font-body);
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display-family);
+  font-family: var(--font-display);
 }
 
 .font-mono-accent {
-  font-family: var(--font-mono-family);
+  font-family: var(--font-mono);
 }
 
 /* Accessibility: respect reduced motion, non-negotiable per Phase 1 */
