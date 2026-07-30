@@ -25,16 +25,6 @@
   --text-4xl: 3.052rem;
   --text-5xl: 3.815rem;
   --text-6xl: 4.768rem;
-
-  /* Spacing (8px base) */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
-  --spacing-3xl: 6rem;
-  --spacing-4xl: 8rem;
 }
 
 body {

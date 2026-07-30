@@ -8,11 +8,16 @@ export function Hero() {
         {siteConfig.role}
       </p>
 
-      <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.05] text-fg max-w-4xl whitespace-normal">
-        {siteConfig.name}
+      <h1 className="font-display font-semibold leading-[0.9] tracking-tight text-fg">
+        <span className="block text-6xl md:text-8xl lg:text-9xl">
+          Sarathy
+        </span>
+        <span className="block text-6xl md:text-8xl lg:text-9xl text-accent">
+          S P
+        </span>
       </h1>
 
-      <p className="text-fg-muted text-base md:text-lg max-w-xl mt-8 leading-relaxed">
+      <p className="text-fg-muted text-base md:text-lg max-w-xl mt-10 leading-relaxed">
         {siteConfig.tagline}
       </p>
 
@@ -24,6 +29,7 @@ export function Hero() {
           View Work
         </Link>
         <a
+        
           href={siteConfig.resumeUrl}
           className="px-6 py-3 border border-border text-fg text-sm font-medium rounded-full hover:border-accent transition-colors"
         >
