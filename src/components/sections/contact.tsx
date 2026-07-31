@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/site-config";
+import { Reveal } from "@/components/shared/reveal";
 
 function GithubIcon() {
   return (
@@ -68,147 +69,149 @@ export function Contact() {
 
   return (
     <section id="contact" className="px-6 md:px-12 py-24 md:py-32 border-t border-border">
-      <p className="font-mono text-xs md:text-sm text-accent tracking-widest uppercase mb-4">
-        Get in Touch
-      </p>
-      <h2 className="font-display text-4xl md:text-6xl font-semibold text-fg mb-16 max-w-2xl leading-tight">
-        Let&apos;s build something together.
-      </h2>
+      <Reveal>
+        <p className="font-mono text-xs md:text-sm text-accent tracking-widest uppercase mb-4">
+          Get in Touch
+        </p>
+        <h2 className="font-display text-4xl md:text-6xl font-semibold text-fg mb-16 max-w-2xl leading-tight">
+          Let&apos;s build something together.
+        </h2>
 
-      {!open && (
-        <>
-          <div className="flex items-center gap-6 mb-10">
-            <div className="flex-1 h-px bg-border" />
-            <button
-              onClick={() => setOpen(true)}
-              className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-accent text-bg text-sm font-medium hover:scale-105 transition-transform flex items-center justify-center shrink-0"
-            >
-              Get in touch
-            </button>
-          </div>
+        {!open && (
+          <>
+            <div className="flex items-center gap-6 mb-10">
+              <div className="flex-1 h-px bg-border" />
+              <button
+                onClick={() => setOpen(true)}
+                className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-accent text-bg text-sm font-medium hover:scale-105 transition-transform flex items-center justify-center shrink-0"
+              >
+                Get in touch
+              </button>
+            </div>
 
-          <div className="flex flex-wrap gap-4">
-            
-             <a href={`mailto:${siteConfig.email}`}
-              className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:border-accent transition-colors"
-            >
-              {siteConfig.email}
-            </a>
-            
-            <a  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-              className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:border-accent transition-colors"
-            >
-              {siteConfig.phone}
-            </a>
-          </div>
-        </>
-      )}
+            <div className="flex flex-wrap gap-4">
+              
+              <a  href={`mailto:${siteConfig.email}`}
+                className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:border-accent transition-colors"
+              >
+                {siteConfig.email}
+              </a>
+              
+              <a  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:border-accent transition-colors"
+              >
+                {siteConfig.phone}
+              </a>
+            </div>
+          </>
+        )}
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-4">
-              <form onSubmit={handleSubmit} className="md:col-span-2 space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-4">
+                <form onSubmit={handleSubmit} className="md:col-span-2 space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="font-mono text-xs text-fg-muted uppercase tracking-widest block mb-2">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Your name"
+                        className="w-full bg-transparent border-b border-border py-2 text-fg placeholder:text-fg-muted/50 focus:border-accent outline-none transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="font-mono text-xs text-fg-muted uppercase tracking-widest block mb-2">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="you@example.com"
+                        className="w-full bg-transparent border-b border-border py-2 text-fg placeholder:text-fg-muted/50 focus:border-accent outline-none transition-colors"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label className="font-mono text-xs text-fg-muted uppercase tracking-widest block mb-2">
-                      Name
+                      Message
                     </label>
-                    <input
-                      type="text"
-                      name="name"
+                    <textarea
+                      name="message"
                       required
-                      placeholder="Your name"
-                      className="w-full bg-transparent border-b border-border py-2 text-fg placeholder:text-fg-muted/50 focus:border-accent outline-none transition-colors"
+                      rows={4}
+                      placeholder="What would you like to build?"
+                      className="w-full bg-transparent border-b border-border py-2 text-fg placeholder:text-fg-muted/50 focus:border-accent outline-none transition-colors resize-none"
                     />
                   </div>
-                  <div>
-                    <label className="font-mono text-xs text-fg-muted uppercase tracking-widest block mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="you@example.com"
-                      className="w-full bg-transparent border-b border-border py-2 text-fg placeholder:text-fg-muted/50 focus:border-accent outline-none transition-colors"
-                    />
-                  </div>
-                </div>
 
-                <div>
-                  <label className="font-mono text-xs text-fg-muted uppercase tracking-widest block mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={4}
-                    placeholder="What would you like to build?"
-                    className="w-full bg-transparent border-b border-border py-2 text-fg placeholder:text-fg-muted/50 focus:border-accent outline-none transition-colors resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="px-6 py-3 bg-accent text-bg text-sm font-medium rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
-                >
-                  {status === "loading" ? "Sending..." : "Send Message"}
-                </button>
-
-                {status === "success" && (
-                  <p className="text-accent text-sm">Message sent — I&apos;ll get back to you soon.</p>
-                )}
-                {status === "error" && (
-                  <p className="text-red-400 text-sm">Something went wrong. Try emailing directly instead.</p>
-                )}
-              </form>
-
-              <div className="space-y-8">
-                <div>
-                  <p className="font-mono text-xs text-fg-muted uppercase tracking-widest mb-2">
-                    Direct
-                  </p>
-                  
-                  <a  href={`mailto:${siteConfig.email}`}
-                    className="font-mono text-sm text-accent underline underline-offset-4 hover:opacity-80 transition-opacity break-all block mb-1"
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="px-6 py-3 bg-accent text-bg text-sm font-medium rounded-full hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
-                    {siteConfig.email}
-                  </a>
-                  <p className="text-fg-muted text-sm">{siteConfig.phone}</p>
-                </div>
+                    {status === "loading" ? "Sending..." : "Send Message"}
+                  </button>
 
-                <div>
-                  <p className="font-mono text-xs text-fg-muted uppercase tracking-widest mb-3">
-                    Elsewhere
-                  </p>
-                  <div className="flex gap-5">
-                    <a href={siteConfig.github} aria-label="GitHub" className="text-fg-muted hover:text-fg transition-colors">
-                      <GithubIcon />
+                  {status === "success" && (
+                    <p className="text-accent text-sm">Message sent — I&apos;ll get back to you soon.</p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-red-400 text-sm">Something went wrong. Try emailing directly instead.</p>
+                  )}
+                </form>
+
+                <div className="space-y-8">
+                  <div>
+                    <p className="font-mono text-xs text-fg-muted uppercase tracking-widest mb-2">
+                      Direct
+                    </p>
+                    
+                     <a href={`mailto:${siteConfig.email}`}
+                      className="font-mono text-sm text-accent underline underline-offset-4 hover:opacity-80 transition-opacity break-all block mb-1"
+                    >
+                      {siteConfig.email}
                     </a>
-                    <a href={siteConfig.linkedin} aria-label="LinkedIn" className="text-fg-muted hover:text-fg transition-colors">
-                      <LinkedinIcon />
-                    </a>
-                    <a href={siteConfig.twitter} aria-label="Twitter" className="text-fg-muted hover:text-fg transition-colors">
-                      <TwitterIcon />
-                    </a>
-                    <a href={siteConfig.instagram} aria-label="Instagram" className="text-fg-muted hover:text-fg transition-colors">
-                      <InstagramIcon />
-                    </a>
+                    <p className="text-fg-muted text-sm">{siteConfig.phone}</p>
+                  </div>
+
+                  <div>
+                    <p className="font-mono text-xs text-fg-muted uppercase tracking-widest mb-3">
+                      Elsewhere
+                    </p>
+                    <div className="flex gap-5">
+                      <a href={siteConfig.github} aria-label="GitHub" className="text-fg-muted hover:text-fg transition-colors">
+                        <GithubIcon />
+                      </a>
+                      <a href={siteConfig.linkedin} aria-label="LinkedIn" className="text-fg-muted hover:text-fg transition-colors">
+                        <LinkedinIcon />
+                      </a>
+                      <a href={siteConfig.twitter} aria-label="Twitter" className="text-fg-muted hover:text-fg transition-colors">
+                        <TwitterIcon />
+                      </a>
+                      <a href={siteConfig.instagram} aria-label="Instagram" className="text-fg-muted hover:text-fg transition-colors">
+                        <InstagramIcon />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Reveal>
     </section>
   );
 }

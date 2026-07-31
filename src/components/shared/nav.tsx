@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState, MouseEvent } from "react";
 
 const navLinks = [
   { label: "Work", href: "/#projects" },
@@ -10,11 +10,43 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function Nav() {
-  const [hovered, setHovered] = useState<string | null>(null);
+function MagneticLink({ label, href }: { label: string; href: string }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  function handleMouseMove(e: MouseEvent<HTMLAnchorElement>) {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setOffset({ x: x * 0.3, y: y * 0.3 });
+  }
+
+  function handleMouseLeave() {
+    setOffset({ x: 0, y: 0 });
+  }
 
   return (
-   <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 bg-bg/80 backdrop-blur-md border-b border-border">
+    <Link
+      ref={ref}
+      href={href}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: `translate(${offset.x}px, ${offset.y}px)`,
+        transition: "transform 0.2s ease-out",
+      }}
+      className="relative text-sm text-fg-muted hover:text-fg inline-block"
+    >
+      {label}
+    </Link>
+  );
+}
+
+export function Nav() {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-6 bg-bg/80 backdrop-blur-md border-b border-border">
       <Link
         href="/"
         className="font-display text-lg font-semibold tracking-tight text-fg"
@@ -24,28 +56,12 @@ export function Nav() {
 
       <nav className="hidden md:flex items-center gap-8">
         {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            onMouseEnter={() => setHovered(link.href)}
-            onMouseLeave={() => setHovered(null)}
-            className="relative text-sm text-fg-muted transition-colors duration-300 hover:text-fg"
-          >
-            {link.label}
-            <span
-              className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-300 ${
-                hovered === link.href ? "w-full" : "w-0"
-              }`}
-            />
-          </Link>
+          <MagneticLink key={link.href} label={link.label} href={link.href} />
         ))}
       </nav>
 
       {/* Mobile nav trigger — placeholder, real menu comes later */}
-      <button
-        className="md:hidden text-fg text-sm"
-        aria-label="Open menu"
-      >
+      <button className="md:hidden text-fg text-sm" aria-label="Open menu">
         Menu
       </button>
     </header>
