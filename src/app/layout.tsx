@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
+import { SmoothScroll } from "@/components/shared/smooth-scroll";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display-sans",
@@ -47,7 +47,7 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

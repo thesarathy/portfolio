@@ -1,3 +1,5 @@
+"use client";
+
 import { skills } from "@/data/skills";
 import { Reveal } from "@/components/shared/reveal";
 
@@ -22,7 +24,7 @@ export function Skills() {
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="px-3 py-1.5 border border-border rounded-full text-sm text-fg"
+                    className="px-3 py-1.5 border border-border rounded-full text-sm text-fg cursor-default transition-all duration-200 hover:border-accent hover:bg-accent/10 hover:-translate-y-0.5"
                   >
                     {item}
                   </span>
