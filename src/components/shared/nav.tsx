@@ -5,9 +5,8 @@ import { useRef, useState, useEffect, MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Work", href: "/#projects", id: "projects" },
+  { label: "Work", href: "/#work", id: "work" },
   { label: "About", href: "/#about", id: "about" },
-  { label: "Research", href: "/#research", id: "research" },
   { label: "Contact", href: "/#contact", id: "contact" },
 ];
 

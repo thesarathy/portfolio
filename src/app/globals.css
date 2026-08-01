@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — Phase 1 system */
- --color-bg: #08090d;
-  --color-bg-alt: #0e1017;
-  --color-fg: #f5f4f0;
-  --color-fg-muted: #8a8a85;
-  --color-accent: #c9a66b;
-  --color-border: #232323;
+  /* Colors — light theme (dark black text for contrast) */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f4f5;
+  --color-fg: #0a0a0a;
+  --color-fg-muted: #374151;
+  --color-accent: #455ce9;
+  --color-border: #e5e5e5;
+
+  /* Spacing rhythm */
+  --section-padding: clamp(5em, 21vh, 12em);
+  --container-padding: clamp(2.5em, 8vw, 8em);
 
   /* Fonts */
   --font-display: var(--font-display-sans), sans-serif;

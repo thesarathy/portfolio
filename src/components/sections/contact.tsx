@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/site-config";
 import { Reveal } from "@/components/shared/reveal";
@@ -68,14 +69,29 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="px-6 md:px-12 py-24 md:py-32 border-t border-border">
+    <section id="contact" className="px-6 md:px-12 py-[var(--section-padding)] border-t border-border">
       <Reveal>
-        <p className="font-mono text-xs md:text-sm text-accent tracking-widest uppercase mb-4">
-          Get in Touch
-        </p>
-        <h2 className="font-display text-4xl md:text-6xl font-semibold text-fg mb-16 max-w-2xl leading-tight">
-          Let&apos;s build something together.
-        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <p className="font-mono text-xs md:text-sm text-accent tracking-widest uppercase mb-4">
+              Get in Touch
+            </p>
+            <h2 className="font-display text-4xl md:text-6xl font-semibold text-fg leading-tight">
+              Let&apos;s work together.
+            </h2>
+          </div>
+
+          <div className="relative aspect-[4/5] w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto rounded-2xl overflow-hidden">
+            <Image
+              src="/profile.jpg"
+              alt="Sarathy S P"
+              fill
+              className="object-cover grayscale contrast-110"
+            />
+            <div className="absolute inset-0 bg-accent/25 mix-blend-color" />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg/40 via-transparent to-transparent" />
+          </div>
+        </div>
 
         {!open && (
           <>
@@ -179,7 +195,7 @@ export function Contact() {
                       Direct
                     </p>
                     
-                     <a href={`mailto:${siteConfig.email}`}
+                    <a  href={`mailto:${siteConfig.email}`}
                       className="font-mono text-sm text-accent underline underline-offset-4 hover:opacity-80 transition-opacity break-all block mb-1"
                     >
                       {siteConfig.email}
