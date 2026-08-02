@@ -15,7 +15,7 @@ const GREETINGS = [
   "Ciao",
   "Olá",
   "おい",
-  "Hallå",
+  "Hallå",  
   "Guten tag",
   "Hallo",
 ];
@@ -85,14 +85,14 @@ export function Hero() {
 
           <h1 className="font-display font-semibold leading-[0.9] tracking-tight text-fg">
             <span className="block overflow-hidden">
-              <motion.span {...fadeUp(0.1)} className="block text-6xl md:text-8xl lg:text-9xl">
+              <motion.span {...fadeUp(0.1)} className="block text-5xl md:text-6xl lg:text-7xl">
                 Sarathy
               </motion.span>
             </span>
             <span className="block overflow-hidden">
               <motion.span
                 {...fadeUp(0.22)}
-                className="block text-6xl md:text-8xl lg:text-9xl text-accent"
+                className="block text-5xl md:text-6xl lg:text-7xl text-accent"
               >
                 S P
               </motion.span>
@@ -101,12 +101,12 @@ export function Hero() {
 
           <motion.p
             {...fadeUp(0.4)}
-            className="text-fg-muted text-base md:text-lg max-w-xl mt-10 leading-relaxed"
+            className="text-fg-muted text-lg md:text-xl max-w-xl mt-10 leading-relaxed"
           >
             {siteConfig.tagline}
           </motion.p>
 
-          <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-4 mt-10">
+          <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-4 mt-12">
             <Link
               href="/#work"
               className="px-6 py-3 bg-accent text-bg text-sm font-medium rounded-full hover:opacity-90 transition-opacity"
@@ -124,7 +124,7 @@ export function Hero() {
 
         <motion.div
           {...fadeUp(0.3)}
-          className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0 lg:ml-auto rounded-2xl overflow-hidden"
+          className="relative aspect-[4/5] w-full max-w-lg mx-auto lg:mx-0 lg:ml-auto rounded-2xl overflow-hidden"
         >
           <Image
             src="/profile.jpg"
@@ -140,7 +140,7 @@ export function Hero() {
 
       <motion.div
         {...fadeUp(0.9)}
-        className="absolute bottom-8 left-6 md:left-12 flex items-center gap-3"
+        className="absolute bottom-6 left-6 md:left-12 flex items-center gap-3"
       >
         <span className="font-mono text-[10px] text-fg-muted tracking-widest uppercase">
           Scroll

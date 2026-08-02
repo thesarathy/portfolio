@@ -49,8 +49,6 @@ export function LoadingScreen() {
     return () => clearInterval(interval);
   }, [shouldReduceMotion]);
 
-  const progress = Math.round(((index + 1) / greetings.length) * 100);
-
   return (
     <AnimatePresence>
       {!done && (
@@ -58,11 +56,11 @@ export function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] bg-bg flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[100] bg-[#0a0a0a] flex flex-col items-center justify-center overflow-hidden"
         >
           {/* Ambient glow, pulsing gently */}
           <motion.div
-            className="absolute w-[500px] h-[500px] rounded-full bg-accent/10 blur-[100px]"
+            className="absolute w-[500px] h-[500px] rounded-full bg-accent/20 blur-[100px]"
             animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -75,7 +73,7 @@ export function LoadingScreen() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="relative font-display italic font-medium text-5xl md:text-8xl text-fg tracking-tight"
+                className="relative font-display italic font-medium text-5xl md:text-8xl text-white tracking-tight"
               >
                 {/* Light sweep across the word each time it appears */}
                 <motion.span
@@ -91,19 +89,6 @@ export function LoadingScreen() {
               </motion.p>
             </AnimatePresence>
           </div>
-
-          {/* Loading bar */}
-          <div className="relative mt-10 w-56 md:w-72 h-1 bg-border rounded-full overflow-hidden">
-            <motion.div
-              className="absolute inset-y-0 left-0 bg-accent rounded-full"
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.15, ease: "linear" }}
-            />
-          </div>
-
-          <p className="font-mono text-xs text-fg-muted tracking-widest mt-4 tabular-nums">
-            {progress}%
-          </p>
         </motion.div>
       )}
     </AnimatePresence>

@@ -96,7 +96,7 @@ export function Contact() {
         {!open && (
           <>
             <div className="flex items-center gap-6 mb-10">
-              <div className="flex-1 h-px bg-border" />
+              <div className="flex-1 h-[1.5px] bg-fg/25" />
               <button
                 onClick={() => setOpen(true)}
                 className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-accent text-bg text-sm font-medium hover:scale-105 transition-transform flex items-center justify-center shrink-0"
@@ -108,13 +108,13 @@ export function Contact() {
             <div className="flex flex-wrap gap-4">
               
               <a  href={`mailto:${siteConfig.email}`}
-                className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:border-accent transition-colors"
+                className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:bg-accent hover:text-white hover:border-accent hover:scale-[1.12] transition-all duration-300 ease-out"
               >
                 {siteConfig.email}
               </a>
-              
+
               <a  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:border-accent transition-colors"
+                className="px-5 py-3 border border-border rounded-full text-sm text-fg hover:bg-accent hover:text-white hover:border-accent hover:scale-[1.12] transition-all duration-300 ease-out"
               >
                 {siteConfig.phone}
               </a>
