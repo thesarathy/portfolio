@@ -14,24 +14,23 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "lsd-detection",
-    title: "Lumpy Skin Disease Detection",
+    slug: "resume-screening",
+    title: "Resume Screening",
     summary:
-      "Deep learning pipeline for detecting and grading Lumpy Skin Disease severity in cattle from images.",
-    tags: ["PyTorch", "U-Net", "EfficientNet-B3", "SHAP", "Computer Vision"],
+      "AI-powered resume screening pipeline that parses, scores, and shortlists candidates against job requirements.",
+    tags: ["NLP", "Python", "ML", "Automation"],
+    github: "https://github.com/thesarathy/resume-screening",
     overview:
-      "A pipeline to detect Lumpy Skin Disease in cattle and stratify severity, aimed at supporting early veterinary intervention.",
+      "A resume screening system that ingests resumes, extracts structured information, and ranks candidates against job descriptions to speed up hiring pipelines.",
     architecture:
-      "CLAHE preprocessing → U-Net segmentation → dual feature extraction (EfficientNet-B3 + auxiliary CNN) → cross-attention fusion (768-dim vectors) → K-Means pseudo-labeling for severity stratification (Mild/Moderate/Severe) → AML-SVM classifier → SHAP explainability.",
-    implementation:
-      "", // add specifics: dataset size, training setup, key code decisions
+      "Resume parsing & text extraction → NLP feature extraction → matching/scoring against job requirements → ranked shortlist of candidates.",
+    implementation: "",
     challenges: [
-      "Pseudo-label validity concerns in the severity stratification step",
-      "A dangerous Mild-severity misclassification pattern (9/27 misclassified as Healthy)",
-      "Dataset composition bias — stock-photo healthy images vs. severe clinical LSD images",
+      "Handling unstructured and varied resume formats",
+      "Accurately matching skills and experience to job requirements",
     ],
     results: [
-      "", // add final metrics once settled
+      "Automated resume parsing, scoring, and shortlisting in a single pipeline",
     ],
   },
   {
